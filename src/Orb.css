@@ -1,0 +1,72 @@
+/* =============================================
+   Orb.css — 3D container and CSS fallback
+   ============================================= */
+
+.orb3d-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex: 1;
+}
+
+.orb3d-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* --- CSS fallback when WebGL is unavailable --- */
+.orb-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orb-fallback-inner {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 38% 32%,
+    rgba(34, 211, 238, 0.55) 0%,
+    rgba(8, 20, 40, 0.9) 55%,
+    rgba(7, 9, 15, 1) 100%
+  );
+  box-shadow: 0 0 60px rgba(34, 211, 238, 0.15), 0 0 0 1px rgba(34, 211, 238, 0.12);
+  animation: fallback-breathe 6s ease-in-out infinite;
+}
+
+.orb-fallback-loading .orb-fallback-inner {
+  background: radial-gradient(
+    circle at 38% 32%,
+    rgba(32, 168, 255, 0.65) 0%,
+    rgba(8, 20, 40, 0.9) 55%,
+    rgba(7, 9, 15, 1) 100%
+  );
+  animation: fallback-breathe 1.6s ease-in-out infinite;
+}
+
+.orb-fallback-success .orb-fallback-inner {
+  background: radial-gradient(
+    circle at 38% 32%,
+    rgba(52, 211, 153, 0.6) 0%,
+    rgba(4, 20, 12, 0.9) 55%,
+    rgba(7, 9, 15, 1) 100%
+  );
+}
+
+.orb-fallback-error .orb-fallback-inner {
+  background: radial-gradient(
+    circle at 38% 32%,
+    rgba(248, 113, 113, 0.55) 0%,
+    rgba(25, 6, 6, 0.9) 55%,
+    rgba(7, 9, 15, 1) 100%
+  );
+}
+
+@keyframes fallback-breathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.04); }
+}
